@@ -25,7 +25,6 @@ jobs:
 
     steps:
     - uses: jfrog/setup-jfrog-cli@v4
-    - run: jf --version
       env:
         # JFrog Platform url
         JF_URL: ${{ vars.JF_URL }} # or 'https://acme.jfrog.io'
