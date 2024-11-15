@@ -24,14 +24,15 @@ jobs:
       packages: write
 
     steps:
-    - name: Setup JFrog CLI 
-      uses: jfrog/setup-jfrog-cli@v4
+    - uses: jfrog/setup-jfrog-cli@v4
     - run: jf --version
-      id: setup-cli
       env:
-        JF_URL: https://${{ vars.JF_URL }}
+        # JFrog Platform url
+        JF_URL: ${{ vars.JF_URL }} # or 'https://acme.jfrog.io'
+        # JFrog Platform access token
         JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-    - run: jf rt ping
+    - run: |
+        jf rt ping
     - uses: actions/checkout@v4
     - name: Set up JDK 11
       uses: actions/setup-java@v4
