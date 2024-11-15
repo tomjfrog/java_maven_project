@@ -49,7 +49,7 @@ jobs:
       run: |
         jf mvnc --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
     - name: maven install
-      run: jf mvn clean install -f pom.xml
+      run: jf mvn install -f pom.xml
     - name: publish build info
       run: |
         jf rt build-collect-env 
