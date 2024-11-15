@@ -45,7 +45,9 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
+    - name: Maven JF Setup 
+      run: |
+        jf mvnc --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
