@@ -49,5 +49,5 @@ jobs:
       run: |
         jf mvnc --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
     - name: maven install
-      run: jf mvn install pom.xml
+      run: jf mvn clean install -f pom.xml
 
