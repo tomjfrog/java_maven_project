@@ -47,7 +47,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Maven JF Setup 
       run: |
-        jf mvnc --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
+        jf mvnc --scan true --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
     - name: maven install
       run: jf mvn install -f pom.xml
     - name: publish build info
