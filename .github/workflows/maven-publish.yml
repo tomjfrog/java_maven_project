@@ -53,10 +53,10 @@ jobs:
     - name: publish build info
       run: |
         jf rt build-collect-env 
-        jf rt build-add-dependencies "target/*jar-with-dependencies.jar" --module m1
+        jf rt build-add-dependencies "target/*.jar" --module m1
         jf rt build-add-git
         jf rt build-publish
-        ls
+        ls target/.
         pwd
     - name: build scan
       run: |            
