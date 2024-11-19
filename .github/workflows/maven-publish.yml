@@ -54,10 +54,10 @@ jobs:
       run: |
         jf rt build-collect-env 
         jf rt build-add-dependencies .
-        jf rt build-add-dependencies --from-rt mvn-libs-release
-        jf rt build-add-dependencies --from-rt mvn-libs-release
         jf rt build-add-git
         jf rt build-publish
+        ls
+        pwd
     - name: build scan
       run: |            
         jf build-scan --fail=false
