@@ -57,7 +57,7 @@ jobs:
         --repo-deploy-snapshots mvn-libs-snapshot
     - name: maven install
       run: |
-        jf mvn install -f pom.xml --build-name ${{ github.repository }} --build-number ${{ github.run_number }}
+        jf mvn install -f pom.xml --build-name "${{ github.repository }}" --build-number ${{ github.run_number }}
     - name: publish build info
       run: |
         jf rt build-collect-env --build-name ${{ github.repository }} --build-number ${{ github.run_number }}
