@@ -28,14 +28,12 @@ jobs:
 
     steps:
     - name: Setup JFrog CLI
-      uses: jfrog/setup-jfrog-cli@v4
+      uses: jfrog/setup-jfrog-cli@v4.4.1
       env:
         # JFrog Platform url
         JF_URL: ${{ vars.JF_URL }} # or 'https://acme.jfrog.io'
         JF_USER: ${{ secrets.JF_USER }}
         JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-      with:
-        version: latest
         # JFrog Platform access token
         #JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
     - run: |
@@ -47,6 +45,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        cache: maven
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Maven JF Setup 
@@ -58,7 +57,6 @@ jobs:
       run: |
         jf rt build-collect-env 
         jf rt build-add-git
-        jf rt build-add-dependencies .
         jf rt build-publish
     - name: build scan
       run: |            
