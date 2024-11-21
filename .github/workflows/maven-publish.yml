@@ -24,6 +24,7 @@ jobs:
       packages: write
       actions: read # for detecting the Github Actions environment.
       security-events: write # Required for uploading code scanning
+      id-token: write
 
     steps:
     - name: Setup JFrog CLI
@@ -62,3 +63,4 @@ jobs:
     - name: build scan
       run: |            
         jf build-scan --fail=false
+        jf scan
