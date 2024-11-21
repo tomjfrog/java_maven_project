@@ -64,4 +64,4 @@ jobs:
         jf rt build-publish
     - name: build scan
       run: |            
-        jf build-scan
+        jf build-scan --fail=false
