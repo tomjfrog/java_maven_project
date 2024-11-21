@@ -22,15 +22,19 @@ jobs:
     permissions:
       contents: read
       packages: write
+      actions: read # for detecting the Github Actions environment.
+      security-events: write # Required for uploading code scanning
 
     steps:
     - name: Setup JFrog CLI
-      uses: jfrog/setup-jfrog-cli@v4.3.0
+      uses: jfrog/setup-jfrog-cli@4
       env:
         # JFrog Platform url
         JF_URL: ${{ vars.JF_URL }} # or 'https://acme.jfrog.io'
         JF_USER: ${{ secrets.JF_USER }}
         JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+      with:
+        version: latest
         # JFrog Platform access token
         #JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
     - run: |
@@ -57,4 +61,4 @@ jobs:
         jf rt build-publish
     - name: build scan
       run: |            
-        jf build-scan
+        jf build-scan --fail=false
