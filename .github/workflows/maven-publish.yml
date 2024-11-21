@@ -59,6 +59,10 @@ jobs:
       run: |
         jf mvn install -f pom.xml --build-name "${{ github.repository }}" --build-number ${{ github.run_number }}
 
+    - name: Scan Artifact
+      run: |
+        jf scan ./target/*.jar
+
     - name: publish build info
       run: |
         jf rt build-collect-env  ${{ github.repository }} ${{ github.run_number }}
