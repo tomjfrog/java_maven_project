@@ -63,4 +63,4 @@ jobs:
     - name: build scan
       run: |            
         jf build-scan --fail=false
-        jf scan
+        jf scan target/*.jar
