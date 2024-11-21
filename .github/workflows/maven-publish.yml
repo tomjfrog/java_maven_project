@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Setup JFrog CLI
-      uses: jfrog/setup-jfrog-cli@4
+      uses: jfrog/setup-jfrog-cli@v4
       env:
         # JFrog Platform url
         JF_URL: ${{ vars.JF_URL }} # or 'https://acme.jfrog.io'
