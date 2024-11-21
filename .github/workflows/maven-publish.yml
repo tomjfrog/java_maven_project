@@ -50,7 +50,11 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Maven JF Setup 
       run: |
-        jf mvnc --repo-resolve-releases mvn-libs-release --repo-resolve-snapshots mvn-libs-snapshot --repo-deploy-releases mvn-libs-release --repo-deploy-snapshots mvn-libs-snapshot
+        jf mvnc \
+        --repo-resolve-releases mavencentral-remote \
+        --repo-resolve-snapshots mavencentral-remote \
+        --repo-deploy-releases mvn-libs-snapshot \
+        --repo-deploy-snapshots mvn-libs-snapshot
     - name: maven install
       run: jf mvn install -f pom.xml
     - name: publish build info
@@ -60,5 +64,4 @@ jobs:
         jf rt build-publish
     - name: build scan
       run: |            
-        jf build-scan --fail=false
-        jf scan target/*.jar
+        jf build-scan
